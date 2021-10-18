@@ -1,12 +1,8 @@
 package coding.kata;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,7 +10,9 @@ import static org.junit.Assert.assertEquals;
 public class BankAccountShould {
 
     @Test
-    public void return_white_wins_when_white_has_a_better_high_card_than_black() {
-
+    public void deposit_20_euros_when_deposit_20_euros() {
+        BankAccount bankAccount = new BankAccount();
+        bankAccount.deposit(20);
+        assertEquals(bankAccount.getBalance(), 20);
     }
 }
