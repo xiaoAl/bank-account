@@ -56,4 +56,13 @@ public class BankAccountShould {
         String operationsHistory = bankAccount.getOperationsHistory();
         assertEquals(operationsHistory, "Deposit - 19/10/2021 - 40 - 40\nDeposit - 19/10/2021 - 10 - 50\n");
     }
+
+    @Test
+    public void show_history_of_deposit_40_euros_then_deposit_10_euros_then_withdraw_30_euros() {
+        bankAccount.deposit(40);
+        bankAccount.deposit(10);
+        bankAccount.withdraw(30);
+        String operationsHistory = bankAccount.getOperationsHistory();
+        assertEquals(operationsHistory, "Deposit - 19/10/2021 - 40 - 40\nDeposit - 19/10/2021 - 10 - 50\nWithdrawal - 19/10/2021 - 30 - 20\n");
+    }
 }
