@@ -35,4 +35,10 @@ public class BankAccountShould {
         bankAccount.deposit(20);
         bankAccount.withdraw(40);
     }
+
+    @Test
+    public void show_history_of_no_operation() {
+        String operationsHistory = bankAccount.getOperationsHistory();
+        assertEquals(operationsHistory, "");
+    }
 }

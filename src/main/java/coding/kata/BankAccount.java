@@ -18,6 +18,10 @@ public class BankAccount {
         this.balance -= amount;
     }
 
+    public String getOperationsHistory() {
+        return "";
+    }
+
     public int getBalance() {
         return this.balance;
     }
