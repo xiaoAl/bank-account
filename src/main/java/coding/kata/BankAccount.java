@@ -12,6 +12,9 @@ public class BankAccount {
     }
 
     public void withdraw(int amount) {
+        if(amount > balance) {
+            throw new RuntimeException("You don't have enough money");
+        }
         this.balance -= amount;
     }
 

@@ -14,7 +14,7 @@ public class BankAccountShould {
 
     @Before
     public void setUp() {
-        this.bankAccount = new BankAccount();
+        bankAccount = new BankAccount();
     }
 
     @Test
@@ -28,5 +28,11 @@ public class BankAccountShould {
         bankAccount.deposit(20);
         bankAccount.withdraw(20);
         assertEquals(bankAccount.getBalance(), 0);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void throw_exception_when_deposit_20_euros_then_withdraw_40_euros() {
+        bankAccount.deposit(20);
+        bankAccount.withdraw(40);
     }
 }
