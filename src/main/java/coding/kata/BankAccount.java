@@ -1,9 +1,13 @@
 package coding.kata;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BankAccount {
+    public static final String NOT_ENOUGH_MONEY_EXCEPTION = "You don't have enough money";
     private int balance;
     private List<String> operations;
 
@@ -14,21 +18,26 @@ public class BankAccount {
 
     public void deposit(int amount) {
         this.balance += amount;
-        operations.add("Deposit - 18/10/2021 - 40 - 40");
+        this.operations.add("Deposit - " + getOperationDate() + " - " + amount + " - " + this.balance);
+    }
+
+    private String getOperationDate() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return simpleDateFormat.format(new Date());
     }
 
     public void withdraw(int amount) {
-        if(amount > balance) {
-            throw new RuntimeException("You don't have enough money");
+        if(amount > this.balance) {
+            throw new RuntimeException(NOT_ENOUGH_MONEY_EXCEPTION);
         }
         this.balance -= amount;
     }
 
     public String getOperationsHistory() {
-        if(operations.isEmpty()) {
+        if(this.operations.isEmpty()) {
             return "";
         }
-        return operations.get(0);
+        return this.operations.stream().map(operation -> operation + "\n").collect(Collectors.joining(""));
     }
 
     public int getBalance() {
